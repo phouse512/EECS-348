@@ -115,11 +115,17 @@ def getNextCell( sudoku ):
 
 def backtracking(sudoku):
     global start_time
-    if ( time() - start_time ) > 1200:
+    current_time = time()-start_time
+    if (current_time) > 30:
         print 'Time Limit Exceeded \n'
         return True
+   
+    print int(current_time)
+    print "\n"
+    if((int(current_time)%10 == 0) and (current_time > 0)):
+        PrintBoard(sudoku)
 
-
+    #PrintBoard(sudoku)
     nextrow, nextcol = getNextCell( sudoku )
     if ( nextrow == nextcol == -1 ): return True
 
@@ -190,6 +196,8 @@ def forwardChecking(sudoku, possibilityMatrix):
     if ( time() - start_time ) > 10:
         print 'Time Limit Exceeded \n'
         return True
+    if((time()-start_time)%10 == 0):
+        PrintBoard(sudoku)
 
     nextrow, nextcol = getNextCell(sudoku)
 
